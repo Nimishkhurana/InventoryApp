@@ -12,7 +12,7 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
     public static final String LOG_TAG = InventoryDbHelper.class.getSimpleName();
 
     /** Name of the database file */
-    private static final String DATABASE_NAME = "inventory.db";
+    private static final String DATABASE_NAME = "inventoryapp.db";
 
     /**
      * Database version. If you change the database schema, you must increment the database version.
@@ -33,10 +33,11 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         String SQL_CREATE_PETS_TABLE =  "CREATE TABLE " + InventoryContract.ProductEntry.TABLE_NAME + " ("
                 + ProductEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + ProductEntry.COLUMN_PRODUCT_NAME + " TEXT NOT NULL, "
-                + ProductEntry.COLUMN_PRICE+ " INTEGER NOT NULL, "
+                + ProductEntry.COLUMN_PRICE + " REAL NOT NULL, "
                 + ProductEntry.COLUMN_QTY + " INTEGER NOT NULL DEFAULT 1, "
                 + ProductEntry.COLUMN_SUPPLIER_NAME + " TEXT NOT NULL ,"
-                + ProductEntry.COLUMN_SUPPLIER_PHONE_NO + " TEXT NOT NULL);";
+                + ProductEntry.COLUMN_PRODUCT_IMAGE_URI + " TEXT ,"
+                + ProductEntry.COLUMN_SUPPLIER_PHONE_NO + " TEXT );";
 
         // Execute the SQL statement
         db.execSQL(SQL_CREATE_PETS_TABLE);

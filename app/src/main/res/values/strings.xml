@@ -1,3 +1,115 @@
 <resources>
     <string name="app_name">Inventory App</string>
+
+    <string name="action_insert_dummy_data">Insert Dummy Data</string>
+
+    <!-- Label for overflow menu option that deletes all pet data in the app [CHAR LIMIT=20] -->
+    <string name="action_delete_all_entries">Delete All Products</string>
+
+    <!-- Title text for the empty view, which describes the empty dog house image [CHAR LIMIT=50] -->
+
+    <string name="empty_view_title_text">It\'s a bit lonely here...</string>
+
+    <!-- Subtitle text for the empty view that prompts the user to add a product [CHAR LIMIT=50] -->
+    <string name="empty_view_subtitle_text">Get started by adding a product</string>
+
+    <!-- Title for the activity to add a new product [CHAR LIMIT=20] -->
+    <string name="editor_activity_title_new_product">Add a Product</string>
+
+    <!-- Title for the activity to edit an existing product [CHAR LIMIT=20] -->
+    <string name="editor_activity_title_edit_product">Edit Product</string>
+
+    <!-- Label for editor menu option to save product and leave editor [CHAR LIMIT=20] -->
+    <string name="action_save">Save</string>
+
+    <!-- Label for editor overflow menu option that deletes the current product [CHAR LIMIT=20] -->
+    <string name="action_delete">Delete</string>
+
+    <!-- Toast message in editor when new product has been successfully inserted [CHAR LIMIT=NONE] -->
+    <string name="editor_insert_product_successful">Product saved</string>
+
+    <!-- Toast message in editor when new product has failed to be inserted [CHAR LIMIT=NONE] -->
+    <string name="editor_insert_product_failed">Error with saving product</string>
+
+    <!-- Toast message in editor when current product was successfully updated [CHAR LIMIT=NONE] -->
+    <string name="editor_update_product_successful">Product updated</string>
+
+    <!-- Toast message in editor when current product has failed to be updated [CHAR LIMIT=NONE] -->
+    <string name="editor_update_product_failed">Error with updating product</string>
+
+    <!-- Dialog message when user is leaving editor but hasn't saved changes [CHAR LIMIT=NONE] -->
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+
+    <!-- Dialog button text for the option to discard a user's changes [CHAR LIMIT=20] -->
+    <string name="discard">Discard</string>
+
+    <!-- Dialog button text for the option to keep editing the current product [CHAR LIMIT=20] -->
+    <string name="keep_editing">Keep Editing</string>
+
+    <!-- Toast message in editor when current product was successfully deleted [CHAR LIMIT=NONE] -->
+    <string name="editor_delete_product_successful">Product deleted</string>
+
+    <!-- Toast message in editor when current product has failed to be deleted [CHAR LIMIT=NONE] -->
+    <string name="editor_delete_product_failed">Error with deleting product</string>
+
+    <!-- Dialog message to ask the user to confirm deleting the current product [CHAR LIMIT=NONE] -->
+    <string name="delete_dialog_msg">Delete this product?</string>
+
+    <!-- Dialog button text for the option to confirm deleting the current product [CHAR LIMIT=20] -->
+    <string name="delete">Delete</string>
+
+    <!-- Dialog button text for the option to cancel deletion of the current product [CHAR LIMIT=20] -->
+    <string name="cancel">Cancel</string>
+
+    <!-- Label for overview category of attributes in the editor [CHAR LIMIT=30] -->
+    <string name="category_overview">Overview</string>
+
+    <string name="category_supplier">Supplier</string>
+
+    <string name="hint_product_name">Product Name</string>
+
+    <string name="hint_product_price">Product Price</string>
+
+    <string name="hint_product_quantity">Quantity</string>
+
+    <string name="hint_supplier_name">Supplier Name</string>
+
+    <string name="hint_supplier_phone">Supplier Phone</string>
+
+    <string name="dollar_currency_sign">$</string>
+
+    <string name="example_supplier">Khurana Traders</string>
+
+    <!-- Example: name of item -->
+    <string name="example_name_of_item">Sony</string>
+
+    <!-- Example: price of item -->
+    <string name="example_price">199,99</string>
+
+    <!-- Example: quantity of item -->
+    <string name="example_quantity">9</string>
+
+    <!-- Dummy data: name of item -->
+    <string name="dummy_data_product_name">SONY</string>
+
+    <!-- Label for stock -->
+    <string name="in_stock">In stock:</string>
+
+    <!-- Label for unit -->
+    <string name="pcs_unit">pcs</string>
+
+    <string name="product_photo">Product Image</string>
+
+    <string name="intent_type">image/*</string>
+
+    <!-- Label hint for the add photo section. Visible if new product -->
+    <string name="select_image">Select image</string>
+
+    <!-- Label hint for the add photo section. Visible if new product -->
+    <string name="add_photo_hint_text">Tap to add a photo</string>
+
+    <!-- Label hint for the add photo section. Visible if product is editing -->
+    <string name="edit_photo_hint_text">Tap to change a photo</string>
+
+
 </resources>
