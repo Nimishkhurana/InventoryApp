@@ -190,7 +190,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         });
     }
 
-    
+
     public void trySelector() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -248,7 +248,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String supplierPhoneString = mSupplierPhoneEditText.getText().toString().trim();
 
         if(mCurrentProductUri == null && TextUtils.isEmpty(nameString) || TextUtils.isEmpty(price) || TextUtils.isEmpty(qty) ||
-                TextUtils.isEmpty(supplierString) || TextUtils.isEmpty(supplierPhoneString) || mCategory == ProductEntry.CATEGORY_UNKNOWN){
+                TextUtils.isEmpty(supplierString) || TextUtils.isEmpty(supplierPhoneString) ||
+                mCategory == ProductEntry.CATEGORY_UNKNOWN || mImageUri == null) {
 
             Toast.makeText(this, "No null values are accepted",Toast.LENGTH_SHORT).show();
             hasAllRequiredValues = false;
@@ -258,9 +259,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // Create a ContentValues object where column names are the keys,
         // and pet attributes from the editor are the values.
         ContentValues values = new ContentValues();
-        if(mImageUri!=null){
-            values.put(ProductEntry.COLUMN_PRODUCT_IMAGE_URI,mImageUri.toString());
-        }
         values.put(ProductEntry.COLUMN_PRODUCT_NAME, nameString);
         values.put(ProductEntry.COLUMN_PRICE, price );
         values.put(ProductEntry.COLUMN_QTY,qty);
