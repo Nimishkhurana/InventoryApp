@@ -36,8 +36,9 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
                 + ProductEntry.COLUMN_PRICE + " REAL NOT NULL, "
                 + ProductEntry.COLUMN_QTY + " INTEGER NOT NULL DEFAULT 1, "
                 + ProductEntry.COLUMN_SUPPLIER_NAME + " TEXT NOT NULL ,"
-                + ProductEntry.COLUMN_PRODUCT_IMAGE_URI + " TEXT ,"
-                + ProductEntry.COLUMN_SUPPLIER_PHONE_NO + " TEXT );";
+                + ProductEntry.COLUMN_PRODUCT_IMAGE_URI + " TEXT NOT NULL,"
+                + ProductEntry.COLUMN_PRODUCT_CATEGORY + " INTEGER NOT NULL,"
+                + ProductEntry.COLUMN_SUPPLIER_PHONE_NO + " TEXT NOT NULL);";
 
         // Execute the SQL statement
         db.execSQL(SQL_CREATE_PETS_TABLE);

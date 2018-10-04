@@ -58,5 +58,17 @@ public class InventoryContract {
 
         public static final String COLUMN_PRODUCT_IMAGE_URI = "product_image_uri";
 
+        public static final String COLUMN_PRODUCT_CATEGORY = "product_category";
+
+
+
+        public static final int CATEGORY_UNKNOWN = 0;
+        public static final int CATEGORY_GARMENTS = 1;
+        public static final int CATEGORY_COSMETICS = 2;
+        public static final int CATEGORY_BAGS = 3;
+        public static final int CATEGORY_ELECTRONICS = 4;
+        public static final int CATEGORY_OTHER = 5;
+
+
     }
 }

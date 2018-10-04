@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_category_options">
+        <item>@string/category_unknown</item>
+        <item>@string/category_garments</item>
+        <item>@string/category_cosmetics</item>
+        <item>@string/category_bags</item>
+        <item>@string/category_electronics</item>
+        <item>@string/category_other</item>
+    </string-array>
+</resources>

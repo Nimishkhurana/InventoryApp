@@ -1,6 +1,5 @@
 package com.example.android.inventoryapp;
 
-import android.app.Activity;
 import android.app.LoaderManager;
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -9,22 +8,18 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.inventoryapp.data.InventoryDbHelper;
 import com.example.android.inventoryapp.data.InventoryContract.ProductEntry;
 
 import static com.example.android.inventoryapp.data.InventoryDbHelper.LOG_TAG;
@@ -107,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         values.put(ProductEntry.COLUMN_SUPPLIER_NAME, "Khurana Traders");
         values.put(ProductEntry.COLUMN_SUPPLIER_PHONE_NO, "+91-9999000111");
         values.put(ProductEntry.COLUMN_PRODUCT_IMAGE_URI, String.valueOf(imageUri));
+        values.put(ProductEntry.COLUMN_PRODUCT_CATEGORY,4);
 
 
         Uri newUri = getContentResolver().insert(ProductEntry.CONTENT_URI, values);

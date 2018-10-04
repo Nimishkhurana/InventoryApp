@@ -16,18 +16,25 @@ package com.example.android.inventoryapp;
  * limitations under the License.
  */
 
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.inventoryapp.data.InventoryContract.ProductEntry;
+
+import static android.support.constraint.Constraints.TAG;
 
 
 public class ProductCursorAdapter extends CursorAdapter {
@@ -68,27 +75,28 @@ public class ProductCursorAdapter extends CursorAdapter {
      *                correct row.
      */
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
+    public void bindView(View view, final Context context, Cursor cursor) {
         // Find individual views that we want to modify in the list item layout
         ImageView productImage = view.findViewById(R.id.product_image);
         TextView nameTextView = view.findViewById(R.id.product_name);
-        TextView supplierTextView = view.findViewById(R.id.supplier_name);
+        TextView categoryTextView = view.findViewById(R.id.product_category_text_view);
         TextView priceTextView = view.findViewById(R.id.product_price);
         TextView quantityTextView = view.findViewById(R.id.product_current_quantity);
+        ImageButton sellProductImageButton = view.findViewById(R.id.product_sell_button);
 
 
         // Find the columns of pet attributes that we're interested in
+        final int productIdColumnIndex = cursor.getInt(cursor.getColumnIndex(ProductEntry._ID));
         int nameColumnIndex = cursor.getColumnIndex(ProductEntry.COLUMN_PRODUCT_NAME);
         int priceColumnIndex = cursor.getColumnIndex(ProductEntry.COLUMN_PRICE);
         int qtyColumnIndex = cursor.getColumnIndex(ProductEntry.COLUMN_QTY);
-        int supplierNameColumnIndex = cursor.getColumnIndex(ProductEntry.COLUMN_SUPPLIER_NAME);
-        int supplierPhoneColumnIndex = cursor.getColumnIndex(ProductEntry.COLUMN_SUPPLIER_PHONE_NO);
-        int photoColumnIndex = cursor.getColumnIndex(ProductEntry.COLUMN_PRODUCT_IMAGE_URI);
+        int categoryColumnIndex = cursor.getColumnIndex(ProductEntry.COLUMN_PRODUCT_CATEGORY);
+         int photoColumnIndex = cursor.getColumnIndex(ProductEntry.COLUMN_PRODUCT_IMAGE_URI);
 
         // Extract out the value from the Cursor for the given column index
         String productName = cursor.getString(nameColumnIndex);
-        String supplierName = cursor.getString(supplierNameColumnIndex);
-        int qty = cursor.getInt(qtyColumnIndex);
+        int categoryCode = cursor.getInt(categoryColumnIndex);
+        final int currentQty = cursor.getInt(qtyColumnIndex);
         float price = cursor.getFloat(priceColumnIndex);
 
         String imageUriString = cursor.getString(photoColumnIndex);
@@ -102,8 +110,58 @@ public class ProductCursorAdapter extends CursorAdapter {
 
         // Update the TextViews with the attributes for the current product
         nameTextView.setText(productName);
-        supplierTextView.setText(supplierName);
+        categoryTextView.setText(getCategory(context,categoryCode));
         priceTextView.setText(Float.toString(price));
-        quantityTextView.setText(Integer.toString(qty));
+        quantityTextView.setText(Integer.toString(currentQty));
+
+        sellProductImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri productUri = ContentUris.withAppendedId(ProductEntry.CONTENT_URI, productIdColumnIndex);
+                sellProduct(context, productUri, currentQty);
+            }
+        });
     }
+
+    void sellProduct(Context context, Uri productUri, int currentQuantityInStock){
+        int newQuantityValue = (currentQuantityInStock >= 1) ? currentQuantityInStock - 1 : 0;
+
+        if (currentQuantityInStock == 0) {
+            Toast.makeText(context.getApplicationContext(), R.string.toast_out_of_stock_msg, Toast.LENGTH_SHORT).show();
+        }
+
+        // Update table by using new value of quantity
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ProductEntry.COLUMN_QTY, newQuantityValue);
+        int numRowsUpdated = context.getContentResolver().update(productUri, contentValues, null, null);
+        if (numRowsUpdated > 0) {
+            // Show error message in Logs with info about pass update.
+            Log.i(TAG, context.getString(R.string.buy_msg_confirm));
+        } else {
+            Toast.makeText(context.getApplicationContext(), R.string.no_product_in_stock, Toast.LENGTH_SHORT).show();
+            // Show error message in Logs with info about fail update.
+            Log.e(TAG, context.getString(R.string.error_msg_stock_update));
+        }
+    }
+
+    private String getCategory(Context context,int categoryCode){
+        switch (categoryCode){
+            case ProductEntry.CATEGORY_UNKNOWN:
+                return context.getString(R.string.category_unknown);
+            case ProductEntry.CATEGORY_GARMENTS:
+                return context.getString(R.string.category_garments);
+            case ProductEntry.CATEGORY_COSMETICS:
+                return context.getString(R.string.category_cosmetics);
+            case ProductEntry.CATEGORY_BAGS:
+                return context.getString(R.string.category_bags);
+            case ProductEntry.CATEGORY_ELECTRONICS:
+                return context.getString(R.string.category_electronics);
+            case ProductEntry.CATEGORY_OTHER:
+                return context.getString(R.string.category_other);
+            default:
+                return context.getString(R.string.category_unknown);
+        }
+    }
+
+
 }

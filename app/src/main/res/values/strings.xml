@@ -3,7 +3,7 @@
 
     <string name="action_insert_dummy_data">Insert Dummy Data</string>
 
-    <!-- Label for overflow menu option that deletes all pet data in the app [CHAR LIMIT=20] -->
+    <!-- Label for overflow menu option that deletes all product data in the app [CHAR LIMIT=20] -->
     <string name="action_delete_all_entries">Delete All Products</string>
 
     <!-- Title text for the empty view, which describes the empty dog house image [CHAR LIMIT=50] -->
@@ -24,6 +24,8 @@
 
     <!-- Label for editor overflow menu option that deletes the current product [CHAR LIMIT=20] -->
     <string name="action_delete">Delete</string>
+
+    <string name="action_order_more">Order more</string>
 
     <!-- Toast message in editor when new product has been successfully inserted [CHAR LIMIT=NONE] -->
     <string name="editor_insert_product_successful">Product saved</string>
@@ -84,7 +86,7 @@
     <string name="example_name_of_item">Sony</string>
 
     <!-- Example: price of item -->
-    <string name="example_price">199,99</string>
+    <string name="example_price">199.99</string>
 
     <!-- Example: quantity of item -->
     <string name="example_quantity">9</string>
@@ -109,7 +111,40 @@
     <string name="add_photo_hint_text">Tap to add a photo</string>
 
     <!-- Label hint for the add photo section. Visible if product is editing -->
-    <string name="edit_photo_hint_text">Tap to change a photo</string>
+    <string name="edit_photo_hint_text">Tap to change photo</string>
+
+    <string name="category_unknown">Unknown</string>
+
+    <string name="category_other">Other</string>
+
+    <string name="product_category">Category</string>
+
+    <string name="category_garments">Garments</string>
+
+    <string name="category_cosmetics">Cosmetics</string>
+
+    <string name="category_bags">Bags</string>
+
+    <string name="category_electronics">Electronics</string>
+    
+    <string name="plus">+</string>
+
+    <string name="val">0</string>
+
+    <string name="minus">-</string>
+
+    <!-- Toast message about sold item -->
+    <string name="buy_msg_confirm">Item has been sold</string>
+
+    <!-- Toast message: validation of missing product in stock -->
+    <string name="no_product_in_stock">No available product in stock</string>
+
+
+    <string name="toast_out_of_stock_msg">Product is out of stock!</string>
+
+    <!-- Toast message: validation of product quantity -->
+    <string name="error_msg_stock_update">Issue with upload value of quantity</string>
+
 
 
 </resources>

@@ -69,16 +69,26 @@ android:descendantFocusability="blocksDescendants">
             android:text="@string/dollar_currency_sign" />
     </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/supplier_name"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:fontFamily="sans-serif"
-        android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="#AEB6BD"
-        tools:text="@string/example_supplier" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/product_category_text_view"
+            android:layout_width="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:gravity="right"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="#AEB6BD"
+
+            android:layout_height="wrap_content"
+            tools:text="Electronics"/>
+
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -117,6 +127,17 @@ android:descendantFocusability="blocksDescendants">
     </LinearLayout>
 
 
-</LinearLayout>
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/product_sell_button"
+        android:focusableInTouchMode="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:backgroundTint="@color/addButtonColor"
+        android:minWidth="60dp"
+        android:src="@drawable/ic_sell"
+        android:textColor="@android:color/white" />
 
 </LinearLayout>
